@@ -1,0 +1,122 @@
+\documentclass{article}
+
+\begin{document}
+
+This is a basic LaTeX (or \LaTeX{} if you want to be fancy) document.\\[12pt]
+
+Documents have two main sections: a preamble and a body.\\[12pt]
+
+The preamble always starts with the {\tt \textbackslash documentclass} command.
+This indicates the type of document you are creating. Although there are several
+document types, you're most likely to want to use the {\tt article} class, which
+this document uses.
+
+The preamble also contains definitions of commands and symbols, as well as
+imports of other \LaTeX{} packages. There are hundreds of imports available in a
+complete \LaTeX{} installation. Here are some that may prove useful for you:
+\begin{itemize}
+  \item {\tt \textbackslash usepackage\{geometry\}} --- allows you to change
+  the document margins, among other things (note the margins on this document
+  are quite wide; that's the default setting)
+  \item {\tt \textbackslash usepackage\{amsmath\}} --- adds more mathematical
+  typesetting capabilities
+  \item {\tt \textbackslash usepackage\{amssymb\}} --- adds more mathematical
+  symbols
+  \item {\tt \textbackslash usepackage\{amsthm\}} --- adds an environment for
+  typesetting theorems, axioms, \emph{etc}
+  \item {\tt \textbackslash usepackage\{algorithm\}}\\
+    {\tt \textbackslash usepackage\{algpseudocode\}} --- adds an environment for
+    writing algorithms in pseudocode
+  \item {\tt \textbackslash usepackage\{listings\}} --- adds an environment for
+    formatting program listings
+  \item {\tt \textbackslash usepackage\{tikz\}} --- adds TikZ commands. TikZ is
+  a very complex subsystem which is useful for creating vector graphics (for
+  example, trees and graphs). I'll provide more information in a separate
+  document.
+\end{itemize}
+\vskip 12pt
+The document body consists of everything from the {\tt \textbackslash
+begin\{document\}} command down to the {\tt \textbackslash end\{document\}}
+command, which should be the last line of the file. Everything in this
+\emph{environment} is rendered in the output document.\newpage
+
+The body is essentially a sequence of blocks of symbols. These blocks can be:
+\begin{itemize}
+  \item Paragraphs consisting of text and symbols
+  \item Blocks of mathematics text and symbols (such as a proof)
+  \item Itemized or enumerated lists
+  \item Code listings or algorithms
+  \item Images (either drawn or imported)
+\end{itemize}
+There are other types of blocks as well, but you're most likely to use these
+five.\\[12pt]
+
+When you begin typing in the {\tt document} environment, by default you're
+creating a paragraph. The paragraph continues until you start a new paragraph
+or begin an environment for one of the other blocks listed above. To start a new
+paragraph, simply add a blank line to your input document.\\[12pt]
+
+The other blocks are environments, which are delimited by {\tt \textbackslash
+begin\{\ldots\}} and {\tt \textbackslash end\{\ldots\}} commands. Aside from
+the {\tt document} environment, this document also uses the \emph{itemize}
+environment, which creates bulleted lists.\\[12pt]
+
+The other commands used in this document are explained here:
+\begin{itemize}
+  \item {\tt \textbackslash LaTeX} --- produces the fancy \LaTeX{} logo
+  \item {\tt \{\}} --- this doesn't produce any output, but it has two uses:
+    \begin{itemize}
+      \item Ending a command without messing up spacing. Try, for example,
+      removing the {\tt \{\}} after {\tt \textbackslash LaTeX} and render the
+      document. Notice the change in spacing.
+      \item Preventing two adjacent symbols from combining. Try changing
+      {\tt -\{\}-} to {\tt -{}-} in the dashes explanation and render the
+      document. Notice that instead of two hypens, it is rendered as an en-dash.
+    \end{itemize}
+  \item {\tt \textbackslash\textbackslash} --- line break. The additional
+  {\tt [12pt]} adds an extra $12$ points of vertical space before the next
+  line. There are $72.27$ points in an inch.
+  \item {\tt \textbackslash tt} --- switches the font to monospace /
+  ``typewriter'' font.\\ Important note: switching fonts (\emph{typefaces}) is a
+  ``set it and forget it'' action; the switch continues until it is switched
+  again. Place the command and the text that you want to appear in monospace
+  in curly braces {\tt \{\ldots\}}.
+  \item {\tt \textbackslash textbackslash} --- displays a backslash character
+  {\tt \textbackslash}
+  \item {\tt \textbackslash item} --- creates a new bullet in an itemized list
+  \item {\tt \textbackslash \{} and {\tt \textbackslash \}} --- displays open
+  and close curly braces
+  \item {\tt -{}-{}-} --- this is an \emph{em-dash}, used for separating parts
+  of a sentence. There is also an \emph{en-dash} {\tt -{}-} which is used for
+  the dash between the start and end of a range of values (like 1--10), and a
+  \emph{hyphen} which is used between individual words, or to split a word
+  between lines (which \LaTeX{} does automatically, as in ``creating''
+  on the previous page).
+  \item {\tt \textbackslash emph} --- italicizes (\emph{emphasizes}) everything
+  in the curly braces that follow
+  \item {\tt \textbackslash vskip} --- adds vertical space after the end of an
+  environment
+  \item {\tt \$} --- starts and ends \emph{math mode}. Math mode is used to
+  render numbers, math symbols and formulas. Note that {\tt \$} \emph{always}
+  appear in pairs. More about math mode in other documents.
+  \item {\tt \textbackslash ldots} --- this produces an ellipsis
+  \ldots
+  \item {\tt \textbackslash "\{\ldots\}} --- draws an umlaut (or
+  \emph{diaresis}) over a vowel
+  \item {\tt \textbackslash TeX} --- typesets the fancy \TeX{} logo
+\end{itemize}
+\vskip12pt
+
+Finally, if you're \emph{really} interested in learning \LaTeX{}, here are a few
+references that I use:
+\begin{itemize}
+  \item \emph{Guide to \LaTeX{}}, fourth edition, by Kopka and Daly
+  \item \emph{The \LaTeX{} Companion}, second edition, by Mittelbach and Goosens
+  \item \emph{The \LaTeX{} Graphics Companion}, second edition, by Goosens
+  \emph{et al}.
+  \item \emph{Math Into \LaTeX{}}, by Gr\"{a}tzer
+  \item \emph{The \TeX book}, by Knuth
+\end{itemize}
+Plus, there are many online references for \LaTeX{} information.
+
+\end{document}
