@@ -1,0 +1,90 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amssymb,amsmath}
+\usepackage{amsthm}
+
+\begin{document}
+  Two of the basic processing modes in \LaTeX{} are \emph{text mode} and
+  \emph{math mode}. Text mode is processing the paragraph you are now reading;
+  it reads the characters from the input file, generates a glyph (symbol) for
+  each one and builds words, lines and paragraphs from the resulting sequence.
+
+  Math mode is used to typeset mathematics; the input is processed differently
+  than text mode. Three key differences:
+  \begin{itemize}
+    \item Spaces are used for delimiting (ending) commands, but do not generate
+    a space in the rendered output
+    \item Text is italicized, except for certain well-known math terms
+    (\emph{e.g.}, sin)
+    \item Certain operators, like \_ and \^{} have special meaning
+  \end{itemize}
+  \vskip6pt
+
+  There are several different varieties of math modes; I will show you three of
+  the more common ones here.\\
+
+  The first variety is \emph{inline math mode}. This places a small piece of
+  typeset math within a text paragraph. For example, {\tt \$0\textbackslash
+  le x\textbackslash le 10\$} renders as $0\le x\le 10$ within this paragraph.
+
+  Inline math mode begins and ends with the {\tt \$} symbol. If you omit either,
+  the \LaTeX{} processor will give you an error.
+
+  Inline math is good for smaller math items, but note that some math doesn't
+  render very well inline. For example, the summation formula {\tt \$%
+  \textbackslash sum\_\{i=0\}\^{}n i=\textbackslash frac\{n(n+1)\}\{2\}\$}
+  renders as $\sum_{i=0}^n i=\frac{n(n+1)}{2}$ in inline mode.\\
+
+  The next variety is \emph{display math mode}. The input is the same as inline
+  mode, but the delimiters are {\tt \textbackslash [} and {\tt \textbackslash
+  ]}. Often, these are on their own line to make reading the input file a bit
+  easier.
+
+  Display mode separates the math typesetting apart from the text surrounding
+  it, effectively making the math its own paragraph (which, behind the scenes,
+  is exactly what happens). The main effects, other than creating its own
+  paragraph, are that larger symbols are used for things like summations and
+  integrals, and sufficient vertical space is used to properly render all of the
+  input.\\
+
+  The above summation in display mode renders as:
+  \[
+    \sum_{i=0}^n i=\frac{n(n+1)}{2}
+  \]
+  \vskip6pt
+
+  The third variety is a variation of display mode. The \emph{equation}
+  environment allows equations to be numbered for reference elsewhere in the
+  document. The environment begins with {\tt \textbackslash begin\{equation\}}
+  and ends with {\tt \textbackslash end\{equation\}}. Note that all environments
+  begin and end with {\tt \textbackslash begin\{\ldots\}} and {\tt
+  \textbackslash end\{\ldots\}}.
+
+  The summation formula renders in the {\tt equation} environment as:
+
+  \begin{equation}
+    \sum_{i=0}^n i=\frac{n(n+1)}{2}\label{eq:sum-of-integers}
+\end{equation}
+
+Note the only difference is the $(1)$ at the right edge. This can be used to
+refer back to the equation elsewhere in the document.\\
+
+Although you can manually insert the equation number, the reference feature of
+\LaTeX{} is commonly used to handle numbered equations, algorithms, figures,
+\emph{etc}.
+Note that in the source document, I added {\tt \textbackslash label\{eq:sum-of-%
+integers\}} after the formula. This creates a \emph{label} that can later be
+used.\\
+
+To refer to an equation, use the {\tt \textbackslash ref\{\ldots\}} command.
+To refer to the summation, {\tt \textbackslash ref\{eq:sum-of-integers\}} will
+produce the equation number. However, it only generates the number. Normally,
+you would use something like {\tt Equation\textasciitilde \textbackslash ref%
+\{eq:sum-of-integers\}} to get ``Equation~\ref{eq:sum-of-integers}''.\\
+
+Important note: You typically have to run the rendering command twice --- and
+thre times for complex documents --- to get reference numbering to render
+properly.
+\end{document}
