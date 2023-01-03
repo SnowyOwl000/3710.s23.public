@@ -82,9 +82,54 @@ To refer to an equation, use the {\tt \textbackslash ref\{\ldots\}} command.
 To refer to the summation, {\tt \textbackslash ref\{eq:sum-of-integers\}} will
 produce the equation number. However, it only generates the number. Normally,
 you would use something like {\tt Equation\textasciitilde \textbackslash ref%
-\{eq:sum-of-integers\}} to get ``Equation~\ref{eq:sum-of-integers}''.\\
+\{eq:sum-of-integers\}} to get ``Equation~\ref{eq:sum-of-integers}''.\newpage
+
+Note the use of a tilde ({\tt \textasciitilde}) instead of a space. This is a
+\emph{tie} or non-breaking space; it creates a space, but it will force the text
+to its immediate left and right on the same line. Thus, the word ``Equation''
+and the equation number will always appear on the same line.\\
 
 Important note: You typically have to run the rendering command twice --- and
 thre times for complex documents --- to get reference numbering to render
-properly.
+properly.\\
+
+There are thousands of symbols available for both math and text. There are
+references available online. The Comprehensive \TeX{} Archive Network keeps an
+exhaustive list; a 449-page PDF with the list is available at\\[12pt]
+{\tt https://mirror.math.princeton.edu/pub/CTAN/info/symbols/comprehensive/%
+symbols-letter.pdf}\\[12pt]
+
+Here's a summary of symbols and commands used in this document, other than the
+math mode delimiters:
+\begin{itemize}
+  \item {\tt \textbackslash \_} --- display an underscore in text mode
+  \item {\tt \textbackslash \^{}} --- display a caret in text mode. Note that it
+  requires {\tt \{\}} to terminate; otherwise, it will place a circumflex above
+  the next symbol. For example, {\tt \textbackslash \^{}o} renders as {\tt \^o}.
+  \item {\tt \textbackslash le} --- display a less than or equal to symbol $\le$
+  \item {\tt \textbackslash sum} --- display a summation symbol
+  \item {\tt \_} --- render the next item as a subscript. Two notes:
+  \begin{itemize}
+    \item If the item consists of more than one symbol, it must be enclosed in
+    curly braces
+    \item Depending on context, the subscript may be placed next to the
+    preceding symbol or underneath the symbol. Context involves both the mode
+    --- inline or display math mode --- and the preceding symbol.
+  \end{itemize}
+  \item {\tt \^{}} --- render the next item as a superscript. Subscript notes
+  apply here as well.
+  \item {\tt \textbackslash frac\{\emph{numerator}\}\{\emph{denominator}\}} ---
+  render a fraction with given numerator and denominator
+  \item {\tt \textbackslash label\{\ldots\}} --- create a label that can be
+  referred to elsewhere in the document.
+  \item {\tt \textbackslash ref\{\ldots\}} --- refer to a label defined
+  elsewhere in the document. Usually requires two renders to render properly.
+  \item {\tt \`{}\`{}} and {\tt \'{}\'{}} --- render quotation marks at the
+  start and end of quoted text
+  \item {\tt \textbackslash textasciitilde} --- displays a tilde in text mode
+  \item {\tt \textasciitilde} --- Creates a tie, which forces the items
+  immediately before and after to appear on the same line with a space between
+  them.
+  \item {\tt \textbackslash newpage} --- ends the current page
+\end{itemize}
 \end{document}
