@@ -1,0 +1,140 @@
+\documentclass{article}
+
+% this sets the document margins to 1 inch, much better than the default
+\usepackage[margin=1in]{geometry}
+
+% bring in AMS symbols and environments
+\usepackage{amssymb,amsmath}
+\usepackage{amsthm}
+
+\begin{document}
+
+There are two types of lists:
+% The itemize environment generates unnumbered lists
+\begin{itemize}
+  % each item is a bullet point
+  \item Unnumbered lists
+  \item Numbered lists
+\end{itemize}
+
+Unnumbered lists are straightforward. They are created with the {\tt itemize}
+environment. Individual bulleted items are created with the {\tt \textbackslash
+item} command.\\
+
+You can also create sublists, as in the following example:
+\begin{itemize}
+  \item First item
+  \item Second item
+  % For a sublist, you just embed an itemize environment inside the current
+  % environment
+  \begin{itemize}
+    \item \LaTeX{} automatically adjusts the bullets for each level of
+    indentation
+    \item Note that if an item is really long, as this item is, that each line
+    of text is properly indented. This is an extra sentence to make sure this
+    item is really, really long and takes up more than one line on the page.
+  \end{itemize}
+  \item Third item
+\end{itemize}
+
+You can embed up to four levels of lists. It is rare to need more than two
+levels.\\
+
+Numbered lists are created with the {\tt enumerate} environment. Here's an
+example:
+\begin{enumerate}
+  \item First step
+  \item Second step
+  \begin{enumerate}
+    \item Sublists work here too
+    \item See how numbering has changed to lettering here
+  \end{enumerate}
+  \item Numbering resumes when a sublist finishes
+  \begin{itemize}
+    \item An example of embedding an unnumbered sublist inside a numbered list
+    \item You can mix and match as needed
+  \end{itemize}
+\end{enumerate}
+
+That's all there is to basic lists. There are many ways to customize a list; I
+customize the second level when writing homework problems with parts,
+eliminating the parentheses around the letter.\\
+
+A good reference for creating and customizing lists is at
+\begin{center}
+  {\tt\footnotesize https://www.overleaf.com/learn/latex/Lists\#The\_enumerate\_environment\_for\_numbered\_.28ordered.29\_lists}
+\end{center}
+\newpage
+
+\LaTeX{} has the ability to create tables. Although they can be a bit difficult
+to work with if you want to do anything fancy, creating a basic table is fairly
+simple.\\
+
+To create a table, use the {\tt tabular} environment. When you begin the
+environment, you must also specify the number of columns and the justification
+of each column --- left, right or centered. For example, the command
+\begin{center}
+  {\tt \textbackslash begin\{tabular\}\{cclrr\}}
+\end{center}
+creates a table with five columns --- the first two columns are centered, the
+third column is left-justified and the last two columns are right-justified.\\
+
+Content inside the {\tt tabular} environment is divided into rows. A row is all
+content up to an end-of-line marker {\tt \textbackslash\textbackslash}. Within
+a row, columns are separated by an ampersand ({\tt \&}) character. Note that if
+there are $n$ columns, there must always be at most $n-1$ ampersands on a row.\\
+
+Column widths are adjusted to hold the widest content in the column, plus some
+padding. Here's an example illustrating this:\\[6pt]%add 1/2 line of space
+
+% create table with two columns, center and right-justified
+\begin{tabular}{cr}
+  {\bf Word} & {\bf Count}\\% \bf is boldface
+  cat & $3$\\% note: good practice to put numbers in math mode
+  horse & $5$\\
+  octopus & $7$\\
+  antidisestablishmentarianism & $28$\\
+\end{tabular}
+\vskip12pt % needed to add some space between end of table and start of text
+
+Note that there are no borders, and the table is not centered on the page. To
+center the table, place the {\tt tabular} environment inside a {\tt center}
+environment (see next example).\\
+
+Horizontal borders are always above the content line. To add a horizontal
+border, use the {\tt \textbackslash hline} command before the content of the
+line. This will place the border above the content. To get a border below the
+last line, add a line at the bottom with the {\tt \textbackslash hline} command
+and no content. You can use two consecutive {\tt \textbackslash hline} commands
+to get a double line.\\
+
+To create vertical borders, insert vertical bars ({\tt |}) in the column
+specification wherever you want a vertical border. This includes before the
+first column and after the last column. For example, to add vertical borders to
+the previous example, you can use {\tt \{|c|r|\}} as the column specification.\\
+
+Here is an example using borders; note the use of a double line to help separate
+the column headings from the rest of the table.\\
+
+% math mode symbols:
+% \lnot - logical not
+% \to - right arrow
+% \iff - if and only if (biconditional)
+\begin{center} % center the table
+  \begin{tabular}{|c|c|c|c|c|c|c|} % 7 columns, all centered, vertical borders
+    \hline % starting with a top border
+    $p$ & $q$ & $\lnot p$ & $\lnot q$ & $p\to q$ & $\lnot q\to \lnot p$ &
+    $(p\to q)\iff(\lnot q\to\lnot p)$\\ \hline\hline % separate headings from
+    % the rest of the table
+    T & T & F & F & T & T & T\\ \hline % top border of next line
+    T & F & F & T & F & F & T\\ \hline
+    F & T & T & F & T & T & T\\ \hline
+    F & F & T & T & T & T & T\\ \hline % border at the bottom of the table
+  \end{tabular}
+\end{center}
+\vskip12pt
+
+Final thought: Instead of explaining the symbols and commands here, I've added
+comments in the \LaTeX{} document to explain them. Have a look at the source
+file; comments begin with {\tt \%} and go to the end of the line.
+\end{document}
