@@ -1,0 +1,127 @@
+\documentclass{article}
+
+% page uses 1-inch margins on all sides
+\usepackage[margin=1in]{geometry}
+
+% these are different fonts
+\usepackage{arev,tgadventor,tgcursor}
+\usepackage[semibold]{sourcecodepro}
+% use TeX Gyre Adventor as the default font
+\renewcommand{\rmdefault}{qag}
+% sans serif is the base font
+\renewcommand*\familydefault{\sfdefault}
+
+\usepackage{amssymb,amsmath}
+\usepackage{amsthm}
+
+\begin{document}
+% \noindent = don't indent the start of the next paragraph
+% \Huge = use a very large font for this text
+\noindent{\Huge Logic Symbols}\\
+% make a box as wide as an entire line of text
+% inside that box, make a rule (solid line) as wide as the box, and 0.4 points
+% thick (a thin line stretching across the page)
+\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}\\
+
+First, note that the fonts are different. I tend to use this particular font
+--- \TeX{} Gyre Adventor --- for text. Check out the preamble in
+{\tt logicsymbols.tex} to see how I change the font.\\
+
+This document presents the basic propositional and predicate logic symbols we
+use, as well as an environment you can use to format ``two-column'' proofs. To
+begin, here is a truth table showing one of DeMorgan's laws:
+\begin{center}
+  % note the double | to add some separation between columns
+  \begin{tabular}{|c|c||c|c|c|c|c||c|}
+    \hline
+    % \lnot = logical not symbol
+    % \lor = logical or symbol (aka \vee)
+    % \land = logical and symbol (aka \wedge)
+    % \iff = if-and-only-if (biconditional)
+    $p$ & $q$ & $\lnot p$ & $\lnot q$ & $p\lor q$ & $\lnot(p\lor q)$ & $\lnot
+    p\land\lnot q$ & $\lnot(p\lor q)\iff\lnot p\land\lnot q$\\ \hline\hline
+    T & T & F & F & T & F & F & T\\ \hline
+    T & F & F & T & T & F & F & T\\ \hline
+    F & T & T & F & T & F & F & T\\ \hline
+    F & F & T & T & F & T & T & T\\ \hline
+  \end{tabular}
+\end{center}
+
+This shows the basic logic operations and, or and not, as well as the
+biconditional ``if and only if.'' Check out the source code to see the commands
+for the symbols. Note they are all in math mode.\\
+
+Here's one more table showing an if-then proposition.
+\begin{center}
+  % note the double | to add some separation between columns
+  \begin{tabular}{|c|c||c|c|c||c|}
+    \hline
+    % \lnot = logical not symbol
+    % \lor = logical or symbol (aka \vee)
+    % \land = logical and symbol (aka \wedge)
+    % \iff = if-and-only-if (biconditional)
+    $p$ & $q$ & $\lnot p$ & $(\lnot p)\lor q$ & $p\to q$ & $(\lnot p)\lor q\iff
+    p\to q$\\ \hline\hline
+    T & T & F & T & T & T\\ \hline
+    T & F & F & F & F & T\\ \hline
+    F & T & T & T & T & T\\ \hline
+    F & F & T & T & T & T\\ \hline
+  \end{tabular}
+\end{center}
+
+Next are the universal and existential quantifiers, $\forall$ and $\exists$.
+They are always followed by a variable and eventually a propositional function,
+such as in $\forall x\,P(x)$, $\exists y\,Q(y)$ and $\forall x\exists y\,
+R(x,y)$.\\
+% note the "thin space" \, between the quantified variable and the function
+% also note: \/ adjusts spacing when switching from italicized text to upright
+% text, so that the two character at the junction don't overlap at the top.
+\emph{Note}\/: It's common to add a small (thin) space between the quantifier
+variable and the function; see the source to see how that's done.\\
+
+Finally, here's an example of the {\tt \textbackslash align} environment, which
+combines math mode with a two-column layout, which is very handy for proofs. For
+this example, we'll revisit the Socrates example from the book:
+\begin{center}
+  All men are mortal. Socrates is a man. Therefore, Socrates is mortal.
+\end{center}
+
+To turn this into logical statements, let $H(x)$ be ``$x$ is a (hu)man'' and let
+$M(x)$ represent ``$x$ is mortal.'' Then, we have two premises:
+\begin{enumerate}
+  \item $\forall x\,(H(x)\to M(x))$ --- for all entities $x$, if $x$ is human,
+  then $x$ is mortal.
+  \item $H({\rm Socrates})$ --- Socrates is a human.
+\end{enumerate}
+
+Here is the proof that Socrates is mortal. Again, check out the source code.
+\begin{align}
+  % \qquad = two "quads" of space
+  \forall x\,(H(x)\to M(x)) & \qquad\textrm{Premise 1}\\
+  H({\rm Socrates})\to M({\rm Socrates}) & \qquad\textrm{(1), Universal
+  Instantiation}\\
+  H({\rm Socrates}) & \qquad\textrm{Premise 2}\\ \hline
+  % \therefore is the triangular-three-dot symbol
+  \therefore M({\rm Socrates}) & \qquad\textrm{(2) and (3), \emph{modus ponens}}
+\end{align}
+\newpage
+Some notes about this example:
+\begin{itemize}
+  \item In the {\tt \textbackslash align} environment, every line is numbered.
+  You can refer to these numbers elsewhere in the document. To do so, add labels
+  and references; see the example in the math mode documents.\\
+  \emph{Note}\/: I manually referred to lines $1$, $2$ and $3$. That always
+  works, but can be tedious with a large document.
+  \item Use an ampersand ({\tt \&}) to switch from column 1 to column 2.
+  \item Use two backslashes to end a line. It is not necessary to end the last
+  line.
+  \item I used {\tt \textbackslash qquad} to add space between the columns. Try
+  removing it and render the document to see what it's like without the space.
+  \item {\tt \textbackslash hline} draws a horizontal line across the page above
+  the current line, which is useful at the end of the proof.
+  \item There is also an {\tt \textbackslash align*} environment which is
+  identical to {\tt \textbackslash align}, except the lines are not numbered.
+  Sometimes that is preferable (but probably not for our purposes here).
+\end{itemize}
+
+\end{document}
