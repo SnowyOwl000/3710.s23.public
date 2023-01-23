@@ -79,7 +79,7 @@ R(x,y)$.\\
 \emph{Note}\/: It's common to add a small (thin) space between the quantifier
 variable and the function; see the source to see how that's done.\\
 
-Finally, here's an example of the {\tt \textbackslash align} environment, which
+Next, here's an example of the {\tt \textbackslash align} environment, which
 combines math mode with a two-column layout, which is very handy for proofs. For
 this example, we'll revisit the Socrates example from the book:
 \begin{center}
@@ -123,5 +123,20 @@ Some notes about this example:
   identical to {\tt \textbackslash align}, except the lines are not numbered.
   Sometimes that is preferable (but probably not for our purposes here).
 \end{itemize}
+
+Finally, there is the one more logic operator, the \emph{exclusive or}, often
+abbreviated as \emph{xor}. Its symbol is a plus sign inside a circle. Here is a
+short example, demonstrating that exclusive or is the opposite of if and only
+if:
+\vskip12pt
+
+\begin{tabular}{|c|c||c|c|}
+  \hline
+  $p$ & $q$ & $p\oplus q$ & $p\iff q$\\ \hline\hline
+  T & T & F & T\\ \hline
+  T & F & T & F\\ \hline
+  F & T & T & F\\ \hline
+  F & F & F & T\\ \hline
+\end{tabular}
 
 \end{document}
